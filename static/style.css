@@ -1,0 +1,29 @@
+:root { --bg:#f4f6fb; --card:#fff; --text:#1f2937; --muted:#6b7280; --accent:#4f46e5; --pos:#16a34a; --neg:#dc2626; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#0f172a; --card:#1e293b; --text:#e5e7eb; --muted:#94a3b8; }
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:16px; background:var(--bg); color:var(--text); font:15px/1.5 system-ui, sans-serif; }
+main { max-width:1000px; margin:0 auto; display:grid; gap:16px; }
+header { display:flex; justify-content:space-between; align-items:center; }
+h1 { margin:0; font-size:1.5rem; } h2 { margin:0 0 12px; font-size:1.05rem; }
+.card { background:var(--card); border-radius:12px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,.1); }
+.narrow { max-width:360px; margin:12vh auto 0; }
+.narrow h1 { text-align:center; margin-bottom:16px; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; }
+.stats .card { display:flex; flex-direction:column; } .stats span { color:var(--muted); }
+.stats strong { font-size:1.6rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+form { display:flex; flex-direction:column; gap:10px; }
+.tx-form { flex-direction:row; flex-wrap:wrap; } .tx-form > * { flex:1 1 140px; }
+input, select, button { padding:9px 12px; border-radius:8px; border:1px solid #cbd5e1; font:inherit; background:var(--card); color:var(--text); }
+button { background:var(--accent); color:#fff; border:0; cursor:pointer; }
+button.secondary { background:transparent; color:var(--accent); border:1px solid var(--accent); }
+.row { display:flex; gap:10px; } .row button { flex:1; }
+table { width:100%; border-collapse:collapse; }
+th, td { text-align:left; padding:8px 6px; border-bottom:1px solid rgba(128,128,128,.2); }
+.r { text-align:right; } .pos { color:var(--pos); } .neg { color:var(--neg); }
+.error { color:var(--neg); margin:0; min-height:1.2em; } .muted { color:var(--muted); }
+.del { background:none; color:var(--neg); padding:2px 8px; }
+[hidden] { display:none !important; }
+@media (max-width:600px) { td:nth-child(3), th:nth-child(3) { display:none; } }

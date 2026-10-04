@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finance Tracker</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+  <section id="auth" class="card narrow">
+    <h1>💰 Finance Tracker</h1>
+    <form id="auth-form">
+      <input id="username" placeholder="Username" required minlength="3" autocomplete="username">
+      <input id="password" type="password" placeholder="Password (min 6)" required minlength="6" autocomplete="current-password">
+      <div class="row">
+        <button type="submit" data-mode="login">Log in</button>
+        <button type="submit" data-mode="register" class="secondary">Register</button>
+      </div>
+      <p id="auth-error" class="error"></p>
+    </form>
+  </section>
+
+  <main id="app" hidden>
+    <header>
+      <h1>💰 Finance Tracker</h1>
+      <button id="logout" class="secondary">Log out</button>
+    </header>
+
+    <div class="stats">
+      <div class="card"><span>Income</span><strong id="s-income" class="pos">0</strong></div>
+      <div class="card"><span>Expenses</span><strong id="s-expense" class="neg">0</strong></div>
+      <div class="card"><span>Balance</span><strong id="s-balance">0</strong></div>
+    </div>
+
+    <div class="grid">
+      <div class="card"><h2>Spending by category</h2><canvas id="cat-chart"></canvas></div>
+      <div class="card"><h2>Monthly overview</h2><canvas id="month-chart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Add transaction</h2>
+      <form id="tx-form" class="tx-form">
+        <select id="kind"><option value="expense">Expense</option><option value="income">Income</option></select>
+        <input id="amount" type="number" step="0.01" min="0.01" placeholder="Amount" required>
+        <input id="category" placeholder="Category (e.g. Food)" required list="cats">
+        <datalist id="cats"><option>Food</option><option>Rent</option><option>Transport</option><option>Salary</option><option>Fun</option><option>Health</option></datalist>
+        <input id="description" placeholder="Note (optional)">
+        <input id="date" type="date" required>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Transactions</h2>
+      <table>
+        <thead><tr><th>Date</th><th>Category</th><th>Note</th><th class="r">Amount</th><th></th></tr></thead>
+        <tbody id="tx-body"></tbody>
+      </table>
+      <p id="empty" class="muted">No transactions yet.</p>
+    </div>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
